@@ -1,52 +1,117 @@
-# udemy-python-django-operacoes
-Python/Django Operacoes APP do curso de Python em 6 horas
+# 🐍 Django Operações App
 
-## Comando para execução da aplicação:
+Aplicação desenvolvida durante o curso **Python em 6 horas (Udemy)**:  
+https://www.udemy.com/course/aprenda-python-3-em-6h/
 
-* python manage.py runserver
+Este projeto demonstra a criação de um sistema Django completo com múltiplos módulos e upload de imagens.
 
-## Roteiro para criação do projeto:
+---
 
-* django-admin startproject operacoes .
+## ⚙️ Configuração do ambiente
 
-* pip install Pillow
+Você pode criar o ambiente virtual (venv) de **duas formas**:
 
-* python manage.py migrate
+### 🔹 Opção 1 – Pelo PyCharm
+- Crie um novo projeto e em **"Interpreter Type"** escolha **"Project venv"** ao criar o projeto.
 
-* python manage.py createsuperuser
+### 🔹 Opção 2 – Via terminal
+```bash
+# Criar ambiente virtual
+python -m venv venv
 
-* Editar setings.py de operacoes e alterar:
+# Ativar ambiente (Linux/Mac)
+source venv/bin/activate
+
+# No Windows
+venv\Scripts\activate
+
+# Instalar dependências
+
+```
+
+
+
+---
+
+## 🚀 Criação do projeto
+
+```bash
+pip install django
+django-admin startproject operacoes .
+pip install django Pillow
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+> 💡 **Pillow** é usado para lidar com imagens (upload e manipulação).
+
+Editar `operacoes/settings.py`:
+
+```python
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
+```
 
-* Criar o modulo de endereços: 
+---
 
-1) python manage.py startapp enderecos
+## 🧩 Criação do módulo de endereços
 
-2) Criar a classe Endereco no model de enderecos
+```bash
+python manage.py startapp enderecos
+```
 
-3) Editar settings.py de operacoes em INSTALLED_APPS adicionar enderecos
+1. Criar a classe `Endereco` no `models.py` do app.  
+2. Registrar a aplicação no `settings.py` (`INSTALLED_APPS`).  
+3. Editar `admin.py` e adicionar:
+   ```python
+   from .models import Endereco
+   admin.site.register(Endereco)
+   ```
+4. Criar e aplicar migrações:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
 
-4) Editar admin.py de operacoes e adicionar: admin.site.register(Endereco) e importar a classe com admin.site.register(Endereco) 
+> 🔁 Repita esses passos para criar outros módulos do projeto.
 
-5) python manage.py makemigrations
+---
 
-6) python manage.py migrate
+## 🗂️ Configurações adicionais
 
-* Repetir os passos de 1 a 6 para criar os demais módulos
+Editar `settings.py`:
 
-7) Editar settings.py de operacoes e adicionar: MEDIA_URL = '/media/'
+```python
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
 
-8) Editar settings.py de operacoes e adicionar: MEDIA_ROOT = 'media'
+DATE_FORMAT = 'd/m/Y'
+DATE_INPUT_FORMATS = ('%d/%m/%Y',)
+USE_I18N = False
+```
 
-9) Editar urls.py de operacoes em urlpatterns adicionar: + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+Editar `urls.py`:
 
-10) Editar settings.py de operacoes e adicionar: DATE_FORMAT = 'd/m/Y'
+```python
+from django.conf import settings
+from django.conf.urls.static import static
 
-11) Editar settings.py de operacoes e adicionar: DATE_INPUT_FORMATS = ('%d/%m/%Y',)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
 
-12) Editar settings.py de operacoes e alterar USE_I18N = False
+---
 
-13) Classes com nomes com caracteres especiais podem usar um atributo META para informar a exibição correta
+## 🧠 Dicas
 
-14) Classes como admin de diligencias podem conter uma classe Admin que configura exibição da listagem e filtros de busca 
+- Use `class Meta:` para nomes com caracteres especiais.  
+- No `admin`, crie classes `ModelAdmin` para personalizar listagem e filtros.
+
+---
+
+## ▶️ Executar o projeto
+
+```bash
+python manage.py runserver
+```
+
+Acesse em: **http://127.0.0.1:8000/**
