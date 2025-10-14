@@ -8,5 +8,9 @@ class Endereco(models.Model):
     numero = models.IntegerField(null=False, blank=False)
     cep = models.CharField(max_length=10, null=False, blank=False)
 
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereços'
+
     def __str__(self):
         return self.logradouro
