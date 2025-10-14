@@ -1,11 +1,13 @@
 # udemy-python-django-operacoes
 Python/Django Operacoes APP do curso de Python em 6 horas
 
-## Roteiro:
-
-* django-admin startproject operacoes .
+## Comando para execução da aplicação:
 
 * python manage.py runserver
+
+## Roteiro para criação do projeto:
+
+* django-admin startproject operacoes .
 
 * pip install Pillow
 
