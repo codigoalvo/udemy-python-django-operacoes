@@ -7,6 +7,8 @@ Python/Django Operacoes APP do curso de Python em 6 horas
 
 ## Roteiro para criação do projeto:
 
+* pip install django
+
 * django-admin startproject operacoes .
 
 * pip install Pillow
