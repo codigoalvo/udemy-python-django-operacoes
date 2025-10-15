@@ -5,6 +5,42 @@ https://www.udemy.com/course/aprenda-python-3-em-6h/
 
 Este projeto demonstra a criação de um sistema Django completo com múltiplos módulos e upload de imagens.
 
+
+## 🧩 Comandos a executar na primeira vez após baixar o repositório
+
+Ao clonar este projeto em uma nova máquina, é necessário recriar o ambiente virtual e instalar as dependências antes de executar a aplicação.  
+Siga os comandos abaixo (para sistemas Linux ou macOS):
+
+```bash
+# 1️⃣ Criar o ambiente virtual
+python3 -m venv .venv
+
+# 2️⃣ Ativar o ambiente virtual
+source .venv/bin/activate
+
+# 3️⃣ Atualizar o gerenciador de pacotes
+python -m pip install --upgrade pip
+
+# 4️⃣ Instalar as dependências principais
+pip install django pillow
+
+# 5️⃣ Aplicar as migrações iniciais do banco de dados
+python manage.py migrate
+
+# 6️⃣ Criar o usuário administrador (siga as instruções interativas)
+python manage.py createsuperuser
+
+# 7️⃣ Iniciar o servidor de desenvolvimento
+python manage.py runserver
+```
+
+Após isso, acesse a aplicação em:  
+👉 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)  
+E o painel administrativo em:  
+👉 [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+
+
+
 ---
 
 ## ⚙️ Configuração do ambiente
